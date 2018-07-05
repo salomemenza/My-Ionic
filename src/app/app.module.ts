@@ -13,6 +13,7 @@ import { ApiListPage } from '../pages/api-list/api-list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
+import { Splash } from '../pages/splash/splash';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { RestProvider } from '../providers/rest/rest';
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
-    ApiListPage
+    ApiListPage,
+    Splash
   ],
   imports: [
     BrowserModule,

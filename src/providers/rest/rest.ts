@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
@@ -15,8 +15,12 @@ export class RestProvider {
   private apiUrl = 'https://restcountries.eu/rest/v2/all';
   private apiUrl2 = 'http://desarrollo6.acfarma.com/example/rest_api';
 
+  private headers;
+
   constructor(public http: HttpClient) {
-    console.log('Hello RestProvider Provider');
+    this.headers = new HttpHeaders();
+    this.headers =  this.headers.set("X-API-KEY", "1cc99d86-bdae-4258-9f51-d0db0f2ae327");
+    console.log('Hello RestProvider Provider: '+this.headers.get("X-API-KEY"));
   }
 
   getCountries(): Observable<{}> {
@@ -27,7 +31,7 @@ export class RestProvider {
   }
 
   getProducts(): Observable<any> {
-    return this.http.get(this.apiUrl2+'/usuario').pipe(
+    return this.http.get(this.apiUrl2+'/usuario',{headers: this.headers}).pipe(
       map(this.extractData),
       catchError(this.handleError)
     );

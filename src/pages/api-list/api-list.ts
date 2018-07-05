@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 //Rest Api
 import { RestProvider } from '../../providers/rest/rest';
 
@@ -15,19 +15,28 @@ export class ApiListPage {
   data: any;
   public records: any;
   public count: number;
+  public loading;
 
-  constructor(public navCtrl: NavController, public rest: RestProvider) {
+  constructor(
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController,
+    public rest: RestProvider
+  ) {
+    this.loading = this.loadingCtrl.create({
+      content: 'Obteniedo Información...'
+    });
   }
 
   ionViewDidLoad() {
     this.getCountries();
-    this.getProducts();
+    //this.getProducts();
   }
 
   getCountries() {
+    this.loading.present();
     this.rest.getCountries()
       .subscribe(
-        countries => this.countries = countries,
+        countries => {this.countries = countries; this.loading.dismiss();},
         error =>  this.errorMessage = <any>error
       );
   }
