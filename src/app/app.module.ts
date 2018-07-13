@@ -14,10 +14,12 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { Splash } from '../pages/splash/splash';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
     MyApp,
+    LoginPage,
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,
@@ -32,6 +34,7 @@ import { Splash } from '../pages/splash/splash';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    LoginPage,
     HelloIonicPage,
     ItemDetailsPage,
     ListPage,

@@ -43,6 +43,7 @@ export class RestProvider {
   }
 
   private handleError (error: Response | any) {
+    debugger;
     let errMsg: string;
     if (error instanceof Response) {
       const err = error || '';
